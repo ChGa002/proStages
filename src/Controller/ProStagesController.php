@@ -14,11 +14,8 @@ class ProStagesController extends AbstractController
 
     public function index(): Response
     {
-        /*return $this->render('pro_stages/index.html.twig', [
-            'controller_name' => 'ProStagesController',
-        ]); */
 
-        return new Response ('<h1> Bienvenue sur la page d\'accueil de Prostages </h1 >');
+        return $this->render('pro_stages/index.html.twig');
     }
 
     /**
@@ -42,13 +39,15 @@ class ProStagesController extends AbstractController
     }
 
     /**
-     * @Route("/stages/{id}", name="prostages_stages")
+     * @Route("/stage/{id}", name="prostages_stage")
      */
     
     public function afficherStage($id): Response
     {
 
-        return new Response("Cette page affichera le descriptif du stage ayant pour identifiant $id");
+        return $this->render('pro_stages/afficherStage.html.twig', [
+            'idStage' => $id ,
+        ]);
     }
 
 }

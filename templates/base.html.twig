@@ -2,11 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}ProStages{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block header %}
+        <h1> ----- HEADER ------</h1>
+        {% endblock %}
+        {% block filtrer %}
+        <h1> ----- FILTRER -----</h1>
+        {% endblock %}
+        {% block contenu %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
