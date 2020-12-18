@@ -1,7 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
+
+{% block titrePage %}	<!-- Titre de la page -->
 
 <h1> Liste de stages </h1>
 
+{% endblock %}
+
+
+{% block contenuPage %} <!-- Contenu de la page -->
+<table class="table">	<!-- Tableau des stages -->
+	<thead>
+		<tr>
+			<th scope="col">Titre</th>
+	      	<th scope="col">Nom entreprise</th>
+	      	<th scope="col">Activité</th>
+	      	<th scope="col">Adresse</th>
+	      	<th scope="col">Description</th>
+	      	<th scope="col">Formations</th>
+	      	<th scope="col">Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			{% for user in 1..7 %}
+		        <td>{{ user }}</td>
+		    {% endfor %}
+    	</tr>
+	</tbody>
+</table>
 {% endblock %}

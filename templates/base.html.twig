@@ -11,24 +11,53 @@
 
     </head>
     <body>
-        <!-- BLOCK HEADER -->
-        {% block header %}
-        <h1> ----- HEADER ------</h1>
-        {% endblock %}
+        <div class="container-fluid">
 
-        <!-- BLOCK BOUTONS -->
-        {% block boutons %}
-        <h1> ----- BOUTONS -----</h1>
-        {% endblock %}
+            <!-- BLOCK HEADER -->
+            {% block header %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 align=center>
+                        ProStages
+                    </h1>
+                 </div>
+            </div>
+            {% endblock %}
 
-         <!-- BLOCK CONTENU -->
-        {% block contenu %}
-        {% endblock %}
+            <!-- BLOCK BOUTONS -->
+            {% block boutons %}
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary">
+                        Button
+                    </button>
+                </div>
+            </div>
 
-         <!-- BLOCK JAVASCRIPT -->
-        {% block javascripts %}
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-        <script src="{{asset('/js/bootstrap.min.js')}}" ></script>
-        {% endblock %}
+            {% endblock %}
+
+             <!-- BLOCK CONTENU -->
+            {% block contenu %}
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- BLOCK TITRE PAGE -->
+                    {% block titrePage %} {% endblock %}
+
+                    <!-- BLOCK CONTENU DE LA PAGE -->
+                    {% block contenuPage %} {% endblock %}
+
+                </div>
+            </div>
+
+            {% endblock %}
+
+             <!-- BLOCK JAVASCRIPT -->
+            {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+            <script src="{{asset('/js/bootstrap.min.js')}}" ></script>
+            {% endblock %}
+        </div>
     </body>
 </html>

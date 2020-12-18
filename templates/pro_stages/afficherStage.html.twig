@@ -1,7 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
+{% block titrePage %}
 
-<h1> {{ idStage }} </h1>
+<h2> Stage numéro {{ idStage }} </h2>
+
+{% endblock %}
+
+{% block contenuPage %}
+
+	<div class="row">
+
+		<!-- OFFRE STAGE -->
+		<div class="col-md-8 col-sm-12"> 
+
+			Formations
+
+			Description
+
+			lorem ipsum etc
+
+		</div>
+
+		<!-- INFO ENTREPRISE -->
+		<div class="col-md-4 col-sm-12"> 
+
+			Entreprise nom
+			Adresse
+
+		</div>
+	</div>
+
 
 {% endblock %}
