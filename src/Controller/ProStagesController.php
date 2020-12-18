@@ -19,27 +19,18 @@ class ProStagesController extends AbstractController
     }
 
     /**
-     * @Route("/entreprises", name="prostages_entreprises")
+     * @Route("/filtrer", name="prostages_filtrer")
      */
     
-    public function afficherEntreprises(): Response
+    public function filtrer(): Response
     {
 
-        return new Response ('<h1> Cette page affichera la liste des entreprises proposant un stage </h1 >');
-    }
+        return $this->render('pro_stages/filtrer.html.twig');    }
+
+
 
     /**
-     * @Route("/formations", name="prostages_formations")
-     */
-    
-    public function afficherFormations(): Response
-    {
-
-        return new Response ('<h1> Cette page affichera la liste des formations de l\'IUT </h1 >');
-    }
-
-    /**
-     * @Route("/stage/{id}", name="prostages_stage")
+     * @Route("/stage{id}", name="prostages_stage")
      */
     
     public function afficherStage($id): Response
