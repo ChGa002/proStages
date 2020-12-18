@@ -2,20 +2,33 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+
+         <!-- TITRE -->
         <title>{% block title %}ProStages{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+
     </head>
     <body>
+        <!-- BLOCK HEADER -->
         {% block header %}
         <h1> ----- HEADER ------</h1>
         {% endblock %}
-        {% block boutonFiltrer %}
-        <h1> ----- BOUTON FILTRER -----</h1>
+
+        <!-- BLOCK BOUTONS -->
+        {% block boutons %}
+        <h1> ----- BOUTONS -----</h1>
         {% endblock %}
+
+         <!-- BLOCK CONTENU -->
         {% block contenu %}
         {% endblock %}
 
+         <!-- BLOCK JAVASCRIPT -->
         {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="{{asset('/js/bootstrap.min.js')}}" ></script>
         {% endblock %}
     </body>
 </html>
