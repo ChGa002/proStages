@@ -1,14 +1,31 @@
 {% extends 'base.html.twig' %}
 
 
-{% block titrePage %}	<!-- Titre de la page -->
+
+{% block titrePage %}	<!-- TITRE -->
 
 <h1> Liste de stages </h1>
 
 {% endblock %}
 
 
-{% block contenuPage %} <!-- Contenu de la page -->
+
+{% block lienBouton %} 	<!-- LIEN BOUTON -->
+
+<a href="filtrer" 
+
+{% endblock %}
+
+
+{% block labelBouton %}	<!-- LABEL BOUTON -->
+
+Filtrer
+
+{% endblock %}
+
+
+{% block contenuPage %}	<!-- CONTENU PAGE -->
+
 <table class="table">	<!-- Tableau des stages -->
 	<thead>
 		<tr>
@@ -29,4 +46,5 @@
     	</tr>
 	</tbody>
 </table>
+
 {% endblock %}

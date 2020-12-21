@@ -25,13 +25,24 @@
             {% endblock %}
 
             <!-- BLOCK BOUTONS -->
-            {% block boutons %}
+            {% block bouton %}
             
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary">
-                        Button
-                    </button>
+                    <!-- Par defaut c'est le bouton de retour car 2/3 pages l'utilisent -->
+                    {% block lienBouton %}
+                    <a href="javascript:history.back()"
+                    {% endblock %}
+
+                        <button type="button" class="btn btn-primary">
+                            
+                            {% block labelBouton %} 
+                                Retour 
+                            {% endblock %} 
+
+                        </button>
+                    </a>
+                    
                 </div>
             </div>
 

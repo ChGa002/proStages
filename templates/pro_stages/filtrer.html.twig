@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block titrePage %}
+{% block titrePage %}	<!-- TITRE -->
 
 <h3> Filtrer </h3>
 
 {% endblock %}
 
-{% block contenuPage %}
+
+{% block contenuPage %}	<!-- CONTENU PAGE -->
+
 	<div class="row">
+
 		<!-- tab contient les types de filtrage -->
 		{% set tab = {1:'formation',2:'entreprise'} %} 
 
 		{% for filtrage in tab %}
 			
-			<div class="col-md-6 col-sm-12" style="border:1px solid black;">
+			<div class="col-md-6 col-sm-12" style="border:1px solid black;"> <!-- encadre en noir -->
+
 				<h3> Par {{filtrage}} </h3>		<!-- titre liste -->
+				
 				{% for item in 1..7 %}			
 					<!-- Affichage des elements de la liste -->
 		        	<li>{{ item }}</li>
