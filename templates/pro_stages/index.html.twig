@@ -39,11 +39,14 @@ Filtrer
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			{% for user in 1..7 %}
-		        <td> <a href="/stage1"> 1 </a></td>
+			{% for stage in 1..3 %}
+			<tr>
+				{% for i in 1..7 %}
+		        	<td> <a href="/stage{{stage}}"> {{stage}} </a></td>
+		        {% endfor %}
+		     </tr>
 		    {% endfor %}
-    	</tr>
+    	
 	</tbody>
 </table>
 
