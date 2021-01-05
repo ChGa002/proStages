@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Stage;
+use App\Entity\Entreprise;
+
+
 class ProStagesController extends AbstractController
 {
     /**
@@ -28,7 +32,6 @@ class ProStagesController extends AbstractController
         return $this->render('pro_stages/filtrer.html.twig');    }
 
 
-
     /**
      * @Route("/stage{id}", name="prostages_stage")
      */
@@ -40,5 +43,22 @@ class ProStagesController extends AbstractController
             'idStage' => $id ,
         ]);
     }
-
+        
+    /**
+     * @Route("/entreprise/{idEntreprise}", name="prostages_stagesParEntreprise")
+     */
+    
+    public function stagesParEntreprise($idEntreprise)
+    {
+        $stageRepo = $this->getDoctrine()->getRepository(Stage::class);
+        $entrepriseRepo = $this->getDoctrine()->getRepository(Entreprise::class);
+        $entreprise = $entrepriseRepo->find($idEntreprise);
+        $stages = $stageRepo->findByEntreprise($idEntreprise);
+        
+            return $this->render('pro_stages/listeStages.html.twig', [
+            'stages' => $stages,
+            'nomEntreprise' => $entreprise->getNom()
+        ]);
+    }
+        
 }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %} 
+
+
+<center> Stages proposés par {{nomEntreprise}} </center>
+
+
+{% endblock %}
+
+{% block contenuPage %}
+
+
+	<ul>
+	{% for stage in stages %}
+	<li>
+		<a href="/stage{{ stage.getId() }}"> {{ stage.getTitre() }} </a>
+	</li>
+	{% endfor %}
+	</ul>
+ 
+{% endblock %}
