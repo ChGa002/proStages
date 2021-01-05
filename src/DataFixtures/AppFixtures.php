@@ -40,6 +40,8 @@ class AppFixtures extends Fixture
             $manager->persist($formation);
         }
 
+        // Declaration d'un tableau de domaine de stage 
+        $tableauDomaines = array("web","mobilité","réseau");
          /***************************************
         *** CREATION DES ENTREPRISES ***
         ****************************************/
@@ -72,6 +74,10 @@ class AppFixtures extends Fixture
 
 	            // Definition de l'adresse mail
 	            $stage->setEmail($faker->companyEmail);
+
+	            // Choix du domaine du stage
+	            $domaine = $faker->numberBetween($min = 0, $max = 2);
+	            $stage->setDomaine($tableauDomaines[$domaine]);
 
 	            // Enregistrement du stage
 	            $manager->persist($stage);

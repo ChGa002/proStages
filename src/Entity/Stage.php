@@ -28,8 +28,8 @@ class Stage
      * @ORM\Column(type="text")
      */
     private $description;
-
-    /**
+    
+     /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -44,6 +44,11 @@ class Stage
      * @ORM\JoinColumn(nullable=false)
      */
     private $entreprise;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $domaine;
 
     public function __construct()
     {
@@ -123,6 +128,18 @@ class Stage
     public function setEntreprise(?Entreprise $entreprise): self
     {
         $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getDomaine(): ?string
+    {
+        return $this->domaine;
+    }
+
+    public function setDomaine(string $domaine): self
+    {
+        $this->domaine = $domaine;
 
         return $this;
     }
