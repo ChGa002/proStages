@@ -2,7 +2,7 @@
 
 {% block titrePage %}	<!-- TITRE -->
 
-<h2> Stage numéro {{ idStage }} </h2>
+<h2> Stage {{ stage.id }} : {{ stage.titre }} </h2>
 
 {% endblock %}
 
@@ -14,20 +14,28 @@
 		<!-- Offre stage -->
 		<div class="col-md-8 col-sm-12"> 
 
-			Formations <br>
+			<b> Formations: </b> <br> 
 
-			Description <br> <br>
+			{% for formation in stage.formation %}
 
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id maximus ipsum. Praesent eu orci et lorem aliquet auctor quis a mauris. Cras suscipit feugiat volutpat. Fusce ipsum lorem, volutpat vel nibh non, blandit convallis lorem. Suspendisse laoreet, mauris at laoreet dapibus, lorem nunc tristique nisl, quis suscipit quam libero sit amet lectus. Proin condimentum dapibus suscipit. Vivamus a nunc vitae mi accumsan posuere iaculis sed odio. Sed tincidunt viverra leo vitae ultricies. Quisque ut consectetur neque. Mauris vel tincidunt mauris, in pulvinar enim. Donec eu nisl vel enim maximus cursus. Vivamus imperdiet, eros ut varius ultrices, quam urna feugiat nulla, at varius nunc velit quis ex. Vivamus efficitur, elit vel consequat dignissim, quam leo convallis nisi, at convallis felis felis vitae orci. Sed posuere maximus turpis ac tempor. Suspendisse a risus ut leo feugiat fermentum ac ac ex.
+			- {{ formation.Formation }} <br>
+
+			{% endfor %}
+
+			<br> <b> Description: </b> <br>
+
+			{{stage.description}} <br> <br>
 
 		</div>
 
 		<!-- Info entreprise -->
 		<div class="col-md-4 col-sm-12"> 
 
-			Entreprise <br>
-			nom <br>
-			Adresse <br>
+			<b> Entreprise: {{ stage.entreprise.nom }} </b> <br> <br>
+
+			Adresse: {{ stage.entreprise.adresse }} <br> <br>
+
+			Activité: {{stage.entreprise.activite}}
 
 		</div>
 	</div>

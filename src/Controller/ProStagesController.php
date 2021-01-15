@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Stage;
 use App\Entity\Entreprise;
+use App\Entity\Formation;
 
 
 class ProStagesController extends AbstractController
@@ -18,8 +19,12 @@ class ProStagesController extends AbstractController
 
     public function index(): Response
     {
-
-        return $this->render('pro_stages/index.html.twig');
+        $stageRepo = $this->getDoctrine()->getRepository(Stage::class);
+        $stages = $stageRepo->findAll();
+        
+        return $this->render('pro_stages/index.html.twig', [
+            'stages' => $stages
+        ]);
     }
 
     /**
@@ -29,7 +34,16 @@ class ProStagesController extends AbstractController
     public function filtrer(): Response
     {
 
-        return $this->render('pro_stages/filtrer.html.twig');    }
+        $entrepriseRepo = $this->getDoctrine()->getRepository(Entreprise::class);
+        $entreprises = $entrepriseRepo->findAll();
+
+        $formationRepo = $this->getDoctrine()->getRepository(Formation::class);
+        $formations = $formationRepo->findAll();
+        return $this->render('pro_stages/filtrer.html.twig', [
+            'entreprises' => $entreprises,
+            'formations' => $formations 
+
+        ]);    }
 
 
     /**
@@ -38,26 +52,48 @@ class ProStagesController extends AbstractController
     
     public function afficherStage($id): Response
     {
+        $stageRepo = $this->getDoctrine()->getRepository(Stage::class);
+        $stage = $stageRepo->find($id);
 
         return $this->render('pro_stages/afficherStage.html.twig', [
-            'idStage' => $id ,
+            'stage' => $stage
         ]);
     }
         
     /**
-     * @Route("/entreprise/{idEntreprise}", name="prostages_stagesParEntreprise")
+     * @Route("/entreprise{idEntreprise}", name="prostages_stagesParEntreprise")
      */
     
     public function stagesParEntreprise($idEntreprise)
     {
-        $stageRepo = $this->getDoctrine()->getRepository(Stage::class);
         $entrepriseRepo = $this->getDoctrine()->getRepository(Entreprise::class);
         $entreprise = $entrepriseRepo->find($idEntreprise);
-        $stages = $stageRepo->findByEntreprise($idEntreprise);
+
+        $stages = $entreprise->getStages();
+        $filtrerPar = $entreprise->getNom();
         
-            return $this->render('pro_stages/listeStages.html.twig', [
+            return $this->render('pro_stages/index.html.twig', [
             'stages' => $stages,
-            'nomEntreprise' => $entreprise->getNom()
+            'filtrerPar' => $filtrerPar
+        ]);
+    }
+
+       /**
+     * @Route("/formation{idFormation}", name="prostages_stagesParFormation")
+     */
+    
+    public function stagesParFormation($idFormation)
+    {
+        
+        $formationRepo = $this->getDoctrine()->getRepository(Formation::class);
+        $formation = $formationRepo->find($idFormation);
+
+        $stages = $formation->getStages();
+        $filtrerPar = $formation->getFormation();
+
+            return $this->render('pro_stages/index.html.twig', [
+            'stages' => $stages,
+            'filtrerPar' => $filtrerPar
         ]);
     }
         

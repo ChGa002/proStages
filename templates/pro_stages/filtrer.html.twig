@@ -10,25 +10,31 @@
 {% block contenuPage %}	<!-- CONTENU PAGE -->
 
 	<div class="row">
-
-		<!-- tab contient les types de filtrage -->
-		{% set tab = {1:'formation',2:'entreprise'} %} 
-
-		{% for filtrage in tab %}
-			
+		<!-- PAR FORMATION --> 	
 			<div class="col-md-6 col-sm-12" style="border:1px solid black;"> <!-- encadre en noir -->
 
-				<h3> Par {{filtrage}} </h3>		<!-- titre liste -->
+				<h3> Par formation </h3>		<!-- titre liste -->
 				
-				{% for item in 1..7 %}			
+				{% for formation in formations %}			
 					<!-- Affichage des elements de la liste -->
-		        	<li>{{ item }}</li>
+		        	<li><a href = "/formation{{ formation.id }}"/> {{ formation.Formation }}</li>
 				{% endfor %}
 
 			</div>
 
-		{% endfor %}
 
+
+			<!-- PAR ENTREPRISE --> 	
+			<div class="col-md-6 col-sm-12" style="border:1px solid black;"> <!-- encadre en noir -->
+
+				<h3> Par entreprise </h3>		<!-- titre liste -->
+				
+				{% for entreprise in entreprises %}			
+					<!-- Affichage des elements de la liste -->
+		        	<li><a href = "/entreprise{{ entreprise.id }}" /> {{ entreprise.nom }}</li>
+				{% endfor %}
+
+			</div>
 	</div>
 	
 

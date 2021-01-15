@@ -4,7 +4,19 @@
 
 {% block titrePage %}	<!-- TITRE -->
 
-<h1> Liste de stages </h1>
+Liste de stages 
+
+{% if filtrerPar is defined %} <!-- Si la liste est filtrée par une entreprise/formation -->
+
+	: {{ filtrerPar }}			<!-- on affiche la formation -->
+
+	<a href="{{ path('prostages_accueil') }}">  <!-- Bouton permettant d'annuler le filtrage -->
+		<button type="button" class="btn btn-outline-info" >
+			Annuler filtrage 
+        </button>
+	</a> 
+
+{% endif %}
 
 {% endblock %}
 
@@ -27,10 +39,10 @@ Filtrer
 {% block contenuPage %}	<!-- CONTENU PAGE -->
 
 <table class="table">	<!-- Tableau des stages -->
-	<thead>
+	<thead class="thead-light">
 		<tr>
 			<th scope="col">Titre</th>
-	      	<th scope="col">Nom entreprise</th>
+	      	<th scope="col">Entreprise</th>
 	      	<th scope="col">Activité</th>
 	      	<th scope="col">Adresse</th>
 	      	<th scope="col">Description</th>
@@ -38,12 +50,22 @@ Filtrer
 	      	<th scope="col">Email</th>
 		</tr>
 	</thead>
-	<tbody>
-			{% for stage in 1..3 %}
+	<tbody style="font-size:13px">
+			{% for stage in stages %}
 			<tr>
-				{% for i in 1..7 %}
-		        	<td> <a href="/stage{{stage}}"> {{stage}} </a></td>
-		        {% endfor %}
+		        <td> <a href="{{ path('prostages_stage' , {'id': stage.id}) }}"> {{stage.titre}} </a></td>
+		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'idEntreprise' : stage.entreprise.id}) }}"> {{stage.entreprise.nom}} </a></td>
+		        <td> {{stage.entreprise.activite}} </a></td>
+		        <td> {{stage.entreprise.adresse}} </a></td>
+		        <td> {{stage.description | slice(0,40) }} ... </a></td>
+		        <td> <p>
+		        	{% for formation in stage.formation %} <!-- on affiche toutes les formations concernees -->
+		        		<a href="{{ path('prostages_stagesParFormation' , {'idFormation' : formation.id}) }}">{{formation.Formation}} <br>
+		        	{% endfor %}
+		        	</p>
+		        </td>
+		        <td> {{stage.email}} </a></td>
+
 		     </tr>
 		    {% endfor %}
     	
