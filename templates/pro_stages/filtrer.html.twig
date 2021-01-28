@@ -31,7 +31,7 @@
 				
 				{% for entreprise in entreprises %}			
 					<!-- Affichage des elements de la liste -->
-		        	<li><a href="{{ path('prostages_stagesParEntreprise' , {'id' : entreprise.id}) }}"> {{entreprise.nom}} </a></li>
+		        	<li><a href="{{ path('prostages_stagesParEntreprise' , {'nom' : entreprise.nom}) }}"> {{entreprise.nom}} </a></li>
 				{% endfor %}
 
 			</div>

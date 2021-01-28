@@ -24,7 +24,7 @@ Liste de stages
 
 {% block lienBouton %} 	<!-- LIEN BOUTON -->
 
-<a href="filtrer" 
+<a href= {{ path('prostages_filtrer')}} 
 
 {% endblock %}
 
@@ -54,7 +54,7 @@ Filtrer
 			{% for stage in stages %}
 			<tr>
 		        <td> <a href="{{ path('prostages_stage' , {'id': stage.id}) }}"> {{stage.titre}} </a></td>
-		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'id' : stage.entreprise.id}) }}"> {{stage.entreprise.nom}} </a></td>
+		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'nom' : stage.entreprise.nom}) }}"> {{stage.entreprise.nom}} </a></td>
 		        <td> {{stage.entreprise.activite}} </a></td>
 		        <td> {{stage.entreprise.adresse}} </a></td>
 		        <td> {{stage.description | slice(0,40) }} ... </a></td>

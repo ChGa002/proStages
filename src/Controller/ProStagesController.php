@@ -58,18 +58,17 @@ class ProStagesController extends AbstractController
     }
         
     /**
-     * @Route("/entreprise{id}", name="prostages_stagesParEntreprise")
+     * @Route("/entreprise/{nom}", name="prostages_stagesParEntreprise")
      */
     
-    public function stagesParEntreprise(Entreprise $entreprise)
+    public function stagesParEntreprise(StageRepository $stageRepo, $nom)
     {
        
-        $stages = $entreprise->getStages();
-        $filtrerPar = $entreprise->getNom();
+        $stages = $stageRepo->findByEntreprise($nom);
         
             return $this->render('pro_stages/index.html.twig', [
             'stages' => $stages,
-            'filtrerPar' => $filtrerPar
+            'filtrerPar' => $nom
         ]);
     }
 
