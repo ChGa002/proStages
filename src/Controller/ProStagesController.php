@@ -73,18 +73,16 @@ class ProStagesController extends AbstractController
     }
 
        /**
-     * @Route("/formation{id}", name="prostages_stagesParFormation")
+     * @Route("/formation/{formation}", name="prostages_stagesParFormation")
      */
     
-    public function stagesParFormation(Formation $formation)
+    public function stagesParFormation(StageRepository $stageRepo, $formation)
     {
-
-        $stages = $formation->getStages();
-        $filtrerPar = $formation->getFormation();
+        $stages = $stageRepo->findByFormation($formation);
 
             return $this->render('pro_stages/index.html.twig', [
             'stages' => $stages,
-            'filtrerPar' => $filtrerPar
+            'filtrerPar' => $formation
         ]);
     }
         

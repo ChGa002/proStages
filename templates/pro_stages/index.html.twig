@@ -60,7 +60,7 @@ Filtrer
 		        <td> {{stage.description | slice(0,40) }} ... </a></td>
 		        <td> <p>
 		        	{% for formation in stage.formation %} <!-- on affiche toutes les formations concernees -->
-		        		<a href="{{ path('prostages_stagesParFormation' , {'id' : formation.id}) }}">{{formation.Formation}} <br>
+		        		<a href="{{ path('prostages_stagesParFormation' , {'formation' : formation.Formation}) }}">{{formation.Formation}} <br>
 		        	{% endfor %}
 		        	</p>
 		        </td>
