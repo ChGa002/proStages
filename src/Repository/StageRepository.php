@@ -19,6 +19,25 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
+
+
+      /**
+    * @return Stage[] Returns an array of Stage objects
+    */
+    
+    public function findAllOptimise()
+    {
+        return $this->createQueryBuilder('s')
+            ->addSelect('e')
+            ->addSelect('f')
+            ->join('s.entreprise','e')
+            ->join('s.formation','f')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
     /**
     * @return Stage[] Returns an array of Stage objects
     */

@@ -21,7 +21,7 @@ class ProStagesController extends AbstractController
 
     public function index(StageRepository $stageRepo): Response
     {
-        $stages = $stageRepo->findAll();
+        $stages = $stageRepo->findAllOptimise();
         
         return $this->render('pro_stages/index.html.twig', [
             'stages' => $stages
