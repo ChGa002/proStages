@@ -54,13 +54,13 @@ Filtrer
 			{% for stage in stages %}
 			<tr>
 		        <td> <a href="{{ path('prostages_stage' , {'id': stage.id}) }}"> {{stage.titre}} </a></td>
-		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'idEntreprise' : stage.entreprise.id}) }}"> {{stage.entreprise.nom}} </a></td>
+		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'id' : stage.entreprise.id}) }}"> {{stage.entreprise.nom}} </a></td>
 		        <td> {{stage.entreprise.activite}} </a></td>
 		        <td> {{stage.entreprise.adresse}} </a></td>
 		        <td> {{stage.description | slice(0,40) }} ... </a></td>
 		        <td> <p>
 		        	{% for formation in stage.formation %} <!-- on affiche toutes les formations concernees -->
-		        		<a href="{{ path('prostages_stagesParFormation' , {'idFormation' : formation.id}) }}">{{formation.Formation}} <br>
+		        		<a href="{{ path('prostages_stagesParFormation' , {'id' : formation.id}) }}">{{formation.Formation}} <br>
 		        	{% endfor %}
 		        	</p>
 		        </td>

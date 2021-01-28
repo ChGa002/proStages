@@ -17,7 +17,7 @@
 				
 				{% for formation in formations %}			
 					<!-- Affichage des elements de la liste -->
-		        	<li><a href = "/formation{{ formation.id }}"/> {{ formation.Formation }}</li>
+		        	<li><a href="{{ path('prostages_stagesParFormation' , {'id' : formation.id}) }}">{{ formation.Formation }}</a></li>
 				{% endfor %}
 
 			</div>
@@ -31,7 +31,7 @@
 				
 				{% for entreprise in entreprises %}			
 					<!-- Affichage des elements de la liste -->
-		        	<li><a href = "/entreprise{{ entreprise.id }}" /> {{ entreprise.nom }}</li>
+		        	<li><a href="{{ path('prostages_stagesParEntreprise' , {'id' : entreprise.id}) }}"> {{entreprise.nom}} </a></li>
 				{% endfor %}
 
 			</div>
