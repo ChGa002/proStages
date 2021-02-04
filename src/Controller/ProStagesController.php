@@ -112,10 +112,10 @@ class ProStagesController extends AbstractController
             $manager->persist($entreprise);
             $manager->flush();
 
-            return $this->redirectToRoute('openclassdut_filtrer');
+            return $this->redirectToRoute('prostages_filtrer');
 
         }
-        return $this->render('pro_stages/ajoutEntreprise.html.twig', [
+        return $this->render('pro_stages/ajoutModifEntreprise.html.twig', [
             'vueFormulaire' => $formulaireEntreprise->createView(),
             'action' => "creer"
         ]);
@@ -144,10 +144,12 @@ class ProStagesController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($entreprise);
             $manager->flush();
-
+            return $this->redirectToRoute('prostages_filtrer');
         }
-        return $this->render('pro_stages/ajoutEntreprise.html.twig', [
+        return $this->render('pro_stages/ajoutModifEntreprise.html.twig', [
             'vueFormulaire' => $formulaireEntreprise->createView(),
             'action' => "modifier"
         ]);
+
+    }
 }

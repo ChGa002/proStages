@@ -31,7 +31,15 @@
 				
 				{% for entreprise in entreprises %}			
 					<!-- Affichage des elements de la liste -->
-		        	<li><a href="{{ path('prostages_stagesParEntreprise' , {'nom' : entreprise.nom}) }}"> {{entreprise.nom}} </a></li>
+		        	<li>
+		        		<a href="{{ path('prostages_stagesParEntreprise' , {'nom' : entreprise.nom}) }}"> {{entreprise.nom}} </a>
+
+		        		&emsp;  <!-- Grand espace -->
+
+		        		<a href="{{ path('prostages_modifierEntreprise', {'id' : entreprise.id}) }}" style="text-decoration:none;"> &#x1F589 </a> 
+
+		  
+		        	</li>
 				{% endfor %}
 
 			</div>

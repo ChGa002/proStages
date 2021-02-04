@@ -1,5 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block titrePage %}
+
+	{% if action == "creer" %}
+
+		Création d'une entreprise
+
+	{% else %}
+
+		Modification d'une entreprise
+
+	{% endif %}
+{% endblock %}
+
 {% block contenuPage %}
 
 {{ form_start(vueFormulaire) }}
