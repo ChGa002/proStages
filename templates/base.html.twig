@@ -24,29 +24,30 @@
             </div>
             {% endblock %}
 
-            <!-- BLOCK BOUTONS -->
-            {% block bouton %}
+            <!-- MENU NAVBAR -->
             
-            <div class="row my-3">
-                <div class="col-md-12">
-                    <!-- Par defaut c'est le bouton de retour car 2/3 pages l'utilisent -->
-                    {% block lienBouton %}
-                    <a href="javascript:history.back()"
-                    {% endblock %}
-
-                        <button type="button" class="btn btn-primary">
-                            
-                            {% block labelBouton %} 
-                                Retour 
-                            {% endblock %} 
-
-                        </button>
-                    </a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                     
-                </div>
-            </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('prostages_accueil') }}">Accueil<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostages_filtrer') }}">Filtrer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostages_ajouterEntreprise')}}">Ajouter une entreprise</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>   
 
-            {% endblock %}
+            
 
              <!-- BLOCK CONTENU -->
             {% block contenu %}

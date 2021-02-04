@@ -87,7 +87,7 @@ class ProStagesController extends AbstractController
     }
     
     /**
-     * @Route("/ajouter/entreprise", name="prostages_ajout_entreprise")
+     * @Route("/ajouter/entreprise", name="prostages_ajouterEntreprise")
      */
 
     public function ajoutEntreprise(): Response
