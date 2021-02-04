@@ -12,6 +12,7 @@ use App\Entity\Formation;
 use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProStagesController extends AbstractController
 {
@@ -90,17 +91,29 @@ class ProStagesController extends AbstractController
      * @Route("/ajouter/entreprise", name="prostages_ajouterEntreprise")
      */
 
-    public function ajoutEntreprise(): Response
+    public function ajoutEntreprise(Request $request): Response
     {
         $entreprise = new Entreprise(); 
 
+        // Creation du formulaire d'une entreprise
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
         ->add('nom')
         ->add('activite')
         ->add('adresse')
         ->getForm();
 
+        // Recuperation de la requete http
+        $formulaireEntreprise->handleRequest($request);
 
+        dump($entreprise);
+        if ($formulaireEntreprise->isSubmitted() )
+        {
+            // Enregistrer l'entreprise en bd
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($entreprise);
+            $manager->flush();
+
+        }
         return $this->render('pro_stages/ajoutEntreprise.html.twig', [
             'vueFormulaire' => $formulaireEntreprise->createView()
         ]);

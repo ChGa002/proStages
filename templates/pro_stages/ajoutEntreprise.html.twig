@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block contenuPage %}
-{{ form(vueFormulaire) }}
+
+{{ form_start(vueFormulaire) }}
+
+{{ form_row(vueFormulaire.nom,  {'attr':{'placeholder':"Nom de l'entreprise..."}}) }}
+{{ form_row(vueFormulaire.activite, {'attr':{'placeholder':"Son activité..."}}) }}
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Son adresse..."}}) }}
+
+<button type="submit" class="btn btn-primary">Enregistrer</button>
+{{ form_end(vueFormulaire) }}
 
 {% endblock %}
