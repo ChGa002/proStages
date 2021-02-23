@@ -46,6 +46,7 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url
      */
     private $siteWeb;
 
