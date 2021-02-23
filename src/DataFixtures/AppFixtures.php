@@ -54,6 +54,7 @@ class AppFixtures extends Fixture
 	        $entreprise->setNom($faker->company);
 	        $entreprise->setActivite($faker->jobTitle);
 			$entreprise->setAdresse($faker->address);
+			$entreprise->setSiteWeb($faker->url);
 
 	        $manager->persist($entreprise);
 

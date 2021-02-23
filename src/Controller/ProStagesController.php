@@ -96,16 +96,17 @@ class ProStagesController extends AbstractController
         $entreprise = new Entreprise(); 
 
         // Creation du formulaire d'une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+        $formEntreprise = $this->createFormBuilder($entreprise)
         ->add('nom')
         ->add('activite')
         ->add('adresse')
+        ->add('siteWeb')
         ->getForm();
 
         // Recuperation de la requete http
-        $formulaireEntreprise->handleRequest($request);
+        $formEntreprise->handleRequest($request);
 
-        if ($formulaireEntreprise->isSubmitted() )
+        if ($formEntreprise->isSubmitted() && $formEntreprise->isValid() )
         {
             // Enregistrer l'entreprise en bd
             $manager = $this->getDoctrine()->getManager();
@@ -116,7 +117,7 @@ class ProStagesController extends AbstractController
 
         }
         return $this->render('pro_stages/ajoutModifEntreprise.html.twig', [
-            'vueFormulaire' => $formulaireEntreprise->createView(),
+            'vueFormulaire' => $formEntreprise->createView(),
             'action' => "creer"
         ]);
     }   
@@ -129,16 +130,17 @@ class ProStagesController extends AbstractController
     {
 
         // Creation du formulaire d'une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+        $formEntreprise = $this->createFormBuilder($entreprise)
         ->add('nom')
         ->add('activite')
         ->add('adresse')
+        ->add('siteWeb')
         ->getForm();
 
         // Recuperation de la requete http
-        $formulaireEntreprise->handleRequest($request);
+        $formEntreprise->handleRequest($request);
 
-        if ($formulaireEntreprise->isSubmitted() )
+        if ($formEntreprise->isSubmitted() && $formEntreprise->isValid()  )
         {
             // Enregistrer l'entreprise en bd
             $manager = $this->getDoctrine()->getManager();
@@ -147,7 +149,7 @@ class ProStagesController extends AbstractController
             return $this->redirectToRoute('prostages_filtrer');
         }
         return $this->render('pro_stages/ajoutModifEntreprise.html.twig', [
-            'vueFormulaire' => $formulaireEntreprise->createView(),
+            'vueFormulaire' => $formEntreprise->createView(),
             'action' => "modifier"
         ]);
 
