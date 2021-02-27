@@ -14,6 +14,9 @@ use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EntrepriseType;
+use App\Form\StageType;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 class ProStagesController extends AbstractController
 {
@@ -142,6 +145,33 @@ class ProStagesController extends AbstractController
         return $this->render('pro_stages/ajoutModifEntreprise.html.twig', [
             'vueFormulaire' => $formEntreprise->createView(),
             'action' => "modifier"
+        ]);
+
+    }
+
+     /**
+     * @Route("/ajouter/stage", name="prostages_ajouterStage")
+     */
+
+    public function ajouterStage(Request $request, EntityManagerInterface $manager): Response
+    {
+        $stage = new Stage(); 
+        
+        // Creation du formulaire d'une entreprise
+        $formStage = $this->createForm(StageType::class, $stage);
+
+        // Recuperation de la requete http
+        $formStage->handleRequest($request);
+
+        if ($formStage->isSubmitted() && $formStage->isValid()  )
+        {
+            // Enregistrer le stage en bd
+            $manager->persist($stage);
+            $manager->flush();
+            return $this->redirectToRoute('prostages_accueil');
+        }
+        return $this->render('pro_stages/ajoutStage.html.twig', [
+            'form' => $formStage->createView()
         ]);
 
     }

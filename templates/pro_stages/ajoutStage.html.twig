@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+
+Saisie d'un stage
+
+{% endblock %}
+
+{% block contenuPage %}
+
+{{ form_start(form, { 'attr' : {'novalidate':'novalidate'}}) }}
+
+{{ form_row(form)}}
+
+<button type="submit" class="btn btn-primary">Enregistrer</button>
+{{ form_end(form) }}
+
+{% endblock %}
