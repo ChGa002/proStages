@@ -126,12 +126,7 @@ class ProStagesController extends AbstractController
     {
 
         // Creation du formulaire d'une entreprise
-        $formEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('activite')
-        ->add('adresse')
-        ->add('siteWeb')
-        ->getForm();
+        $formEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         // Recuperation de la requete http
         $formEntreprise->handleRequest($request);
