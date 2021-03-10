@@ -22,6 +22,7 @@ class StageType extends AbstractType
             ->add('domaine')
             ->add('entreprise', EntrepriseType::class)
             ->add('formation', EntityType::class, [
+                'label' => 'Formations',
                 'class' => Formation::class,
                 'choice_label' => 'Formation',
                 'expanded' => true,
