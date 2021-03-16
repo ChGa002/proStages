@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
          <!-- TITRE -->
         <title>{% block title %}ProStages{% endblock %}</title>
@@ -39,12 +40,36 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostages_filtrer') }}">Filtrer</a>
                             </li>
+
+                            <!-- Fonctionnalités reservé utilisateur (admin hérite de user)-->
+                            {% if is_granted('ROLE_USER') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostages_ajouterStage') }}">Ajouter un stage</a>
                             </li>
+                            {% endif %}
+
+                            <!-- Fonctionnalités reservé admin -->
+                            {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostages_ajouterEntreprise')}}">Ajouter une entreprise</a>
                             </li>
+                            {% endif %}
+                        </ul>
+                        <ul class="navbar-nav ml-md-auto">
+                            <li class="nav-item">
+
+                                {% if is_granted('ROLE_USER') %}
+                                    <a class="nav-link" href="{{path('app_logout')}}">
+                                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                {% else %}
+                                    <a class="nav-link" href="{{path('app_login')}}">
+                                        <i class="fas fa-user"></i> Connexion
+                                {% endif %}
+                          <span class="sr-only">(current)</span></a>
+                      </li>
+              
+                     
+
                             
                         </ul>
                     </div>
