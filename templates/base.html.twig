@@ -55,18 +55,29 @@
                             </li>
                             {% endif %}
                         </ul>
+                    
+
                         <ul class="navbar-nav ml-md-auto">
-                            <li class="nav-item">
 
                                 {% if is_granted('ROLE_USER') %}
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{path('app_logout')}}">
                                         <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                        <span class="sr-only">(current)</span></a>
+                                 </li>
                                 {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{path('app_inscription')}}">
+                                    <i class="fas fa-plus-circle"></i> Inscription
+                                    <span class="sr-only">(current)</span></a>
+                                    </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{path('app_login')}}">
                                         <i class="fas fa-user"></i> Connexion
+                                    <span class="sr-only">(current)</span></a>
+                                 </li>
                                 {% endif %}
-                          <span class="sr-only">(current)</span></a>
-                      </li>
+                          
               
                      
 

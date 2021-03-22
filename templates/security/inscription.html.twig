@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}Créer un compte{% endblock %}
+
+{% block contenuPage %}
+
+{{form_start(form)}}
+
+{{form_row(form.username, {'label':'Pseudo'})}}
+
+{{form_row(form.password, {'label':'Mot de passe'})}}
+<br>
+<button type="submit" class="btn btn-primary">Créer mon compte</button>
+
+{{form_end(form)}}
+
+
+
+
+{% endblock %}
