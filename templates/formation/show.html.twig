@@ -1,26 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation{% endblock %}
+{% block titrePage %}{{formation.Formation}}{% endblock %}
 
-{% block body %}
-    <h1>Formation</h1>
+{% block contenuPage %}
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ formation.id }}</td>
-            </tr>
-            <tr>
                 <th>Formation</th>
                 <td>{{ formation.Formation }}</td>
+            </tr>
+            <tr>
+                <th>Stages concernés:</th> <td>
+                {% for stage in formation.stages %}
+                   
+                    <a href="{{ path('prostages_stage' , {'id': stage.id}) }}"> {{stage.titre}} - {{stage.entreprise.nom}}</a> <br>
+
+                {% else %}
+                    Aucun
+                {% endfor %}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('formation_index') }}">back to list</a>
-
-    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-
+    <a class="btn btn-primary posD" href="{{ path('formation_edit', {'id': formation.id}) }}"><i class="fas fa-pen"></i> Modifier</a>
     {{ include('formation/_delete_form.html.twig') }}
+
+    <a class="btn btn-light" href="{{ path('formation_index') }}"><i class="fas fa-arrow-left"></i> Retour</a>
 {% endblock %}
