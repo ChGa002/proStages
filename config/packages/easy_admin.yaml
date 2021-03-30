@@ -5,3 +5,15 @@ easy_admin:
         - App\Entity\Formation
         - App\Entity\Entreprise
         - App\Entity\User
+
+    site_name: 'Pro<i>Stages</i>'
+    design:
+      brand-color: '#78c2ad'
+      assets:
+            css:
+                - 'css/admin.css'
+
+    list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }

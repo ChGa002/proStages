@@ -1,0 +1,33 @@
+/* public/css/admin.css */
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+    background-color:white;
+}
+
+.main-header {
+    background-color:  #78c2ad;
+    height:55px;
+    padding:15px;
+}
+
+.easyadmin{
+	background-color:white;
+}
+
+.main-sidebar{
+	background-color:white;
+	align-content:center;
+}
+
+.navbar-custom-menu .user{ 
+	color:white;
+}
+
+.main-header #header-logo a{
+	color:white;
+}
+
+.action-edit{
+	color:black;
+}
