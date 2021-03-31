@@ -43,7 +43,7 @@ Liste de stages
 		        <td> <a href="{{ path('prostages_stagesParEntreprise' , {'nom' : stage.entreprise.nom}) }}"> {{stage.entreprise.nom}} </a></td>
 		        <td> {{stage.entreprise.activite}} </a></td>
 		        <td> {{stage.entreprise.adresse}} </a></td>
-		        <td> {{stage.description | slice(0,40) }} ... </a></td>
+		        <td> {{stage.description | slice(0,60) }} ... </a></td>
 		        <td> <p>
 		        	{% for formation in stage.formation %} <!-- on affiche toutes les formations concernees -->
 		        		<a href="{{ path('prostages_stagesParFormation' , {'formation' : formation.Formation}) }}">{{formation.Formation}} <br>
